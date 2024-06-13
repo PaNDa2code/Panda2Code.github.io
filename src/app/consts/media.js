@@ -2,22 +2,22 @@ import proxy from "../proxies/media"
 
 const media = {
     discord: {
-        id: "914240860101681163",
-        tag: "elias.dev.",
+        id: "907685833988001862",
+        tag: "@panda2code",
     },
     stackOverflow: {
-        id: "19758208",
-        name: "elias",
+        id: "22814262",
+        name: "Panda",
     },
-    github: "EliasDevis",
-    figma: "elias_dev",
-    replit: "EliasDev",
-    codewars: "EliasDevis",
-    devTo: "eliasdevis",
-    cssBattle: "elias_dev",
-    codepen: "elias_dev",
-    dribble: "Elias_dev",
-    email: "elias.devis@protonmail.com"
+    github: "panda2code",
+    // figma: "elias_dev",
+    // replit: "EliasDev",
+    // codewars: "EliasDevis",
+    // devTo: "eliasdevis",
+    // cssBattle: "elias_dev",
+    // codepen: "elias_dev",
+    // dribble: "Elias_dev",
+    email: "MoaazBahaa@protonmail.com"
 
 }
 

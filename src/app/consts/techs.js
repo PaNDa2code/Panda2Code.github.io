@@ -33,4 +33,10 @@ export default {
     deno: "Deno",
     pixijs: "PixiJS",
     preact: "Preact",
+    c: "C",
+    cpp: "C++",
+    rust: "Rust",
+    msbuild: "MSBuild",
+    gnu_make: "Gnu-Make",
+    cmake: "CMake"
 }

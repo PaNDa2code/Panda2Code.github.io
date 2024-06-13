@@ -10,7 +10,7 @@ export default (t) => {
                         <div class="footer__header">
                             <div class="logo">
                                 <img src="/images/logo.svg" alt="logo" class="logo__img">
-                                <div class="logo__name">Elias</div>
+                                <div class="logo__name">Panda</div>
                             </div>
                             <a class="footer__email" href="${media.email}">${media.emailRaw}</a>
                         </div>
@@ -20,7 +20,7 @@ export default (t) => {
                     <div class="footer__media">
                         <div class="footer__title">${t.media}</div>
                         <div class="footer__list">
-                            ${["figma", "github", "discord"]
+                            ${["stackOverflow","github", "discord"]
                                 .map((name) => MediaIcon({ name }))
                                 .join("")}
                         </div>
