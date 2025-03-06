@@ -8,7 +8,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'js/bundle.js', // Output JS in 'dist/js/'
+    assetModuleFilename: 'assets/[hash][ext][query]', // Organize assets
   },
   module: {
     rules: [
@@ -29,6 +30,16 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'images/[hash][ext][query]',
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name][ext]', // Store fonts in 'dist/assets/fonts/'
+        },
       },
     ],
   },
@@ -38,11 +49,14 @@ module.exports = {
       template: './public/index.html',
       filename: 'index.html',
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/styles.css', // Store CSS in 'dist/css/'
+    }),
   ],
   devServer: {
-    static: './dist',
+    static: path.resolve(__dirname, 'dist'),
     hot: true,
     open: true,
+    port: 3000, // Use port 3000 instead of default 8080
   },
 };
