@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development', // Change to 'production' for final build
@@ -52,8 +53,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/styles.css', // Store CSS in 'dist/css/'
     }),
-  ],
-  devServer: {
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/.well-known', to: '.well-known' }, // Ensure 'public' files are copied, including '.well-known/discord'
+      ],
+    }),
+  ], devServer: {
     static: path.resolve(__dirname, 'dist'),
     hot: true,
     open: true,
