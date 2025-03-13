@@ -1,27 +1,27 @@
 :root {
-  --color1: #ffffff;
-  --color2: #00ff90;
-  --color3: #303030;
-  --color4: #000000;
-}
-
-[data-theme="dark"] {
   --color1: #101010;
   --color2: #202020;
   --color3: #00ff90;
   --color4: #00ff90;
 }
 
+[data-theme="light"] {
+  --color1: #ffffff;
+  --color2: #00ff90;
+  --color3: #303030;
+  --color4: #000000;
+}
+
 @font-face {
   font-family: "PixelfySans";
-  src: url("./fonts/en/Pixelfy_Sans.ttf") format("truetype");
+  src: url("./assets/fonts/en/Pixelfy_Sans.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "PixelAE";
-  src: url("./fonts/ar/PixelAE-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/ar/PixelAE-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -99,14 +99,14 @@ h2 {
   color: var(--color1);
 }
 
-.nav-bar li a.active {
+.nav-bar li *.active {
   background-color: var(--color3);
   color: var(--color1) !important;
 }
 
 .material-symbols-outlined {
-  margin-bottom: 0;
-  font-size: 10px;
+  align-self: center;
+  margin: 3px;
   font-variation-settings:
     "FILL" 0,
     "wght" 400,
