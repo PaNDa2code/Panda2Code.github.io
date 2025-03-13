@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("Hello, Webpack!")})();
+(()=>{"use strict";var e=document.getElementById("theme-toggle");function t(t){var m="light"===t?"dark":"light";e.innerText=m+"_mode",e.title="Switch to "+m.charAt(0).toUpperCase()+m.slice(1)+" Mode",localStorage.setItem("theme",t+"_mode"),document.documentElement.setAttribute("data-theme",t)}localStorage.getItem("theme")?t(localStorage.getItem("theme").replace("_mode","")):t("dark"),e.addEventListener("click",(function(){t("light"===document.documentElement.getAttribute("data-theme")?"dark":"light")}))})();
