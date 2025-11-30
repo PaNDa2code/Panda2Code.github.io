@@ -307,3 +307,34 @@ h2 {
     margin: 20px auto;
   }
 }
+
+#projects {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+#project-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background-color: var(--color2);
+  border: 1px solid var(--color4);
+  border-radius: 8px;
+  padding: 20px;
+  text-decoration: none;
+  color: var(--color4);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  color: var(--color3);
+}
