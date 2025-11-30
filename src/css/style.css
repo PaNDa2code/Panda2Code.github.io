@@ -328,6 +328,20 @@ h2 {
   text-decoration: none;
   color: var(--color4);
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card-body {
+  flex-grow: 1;
+}
+
+.project-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .project-card:hover {

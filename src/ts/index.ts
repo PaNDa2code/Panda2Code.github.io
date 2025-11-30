@@ -25,10 +25,9 @@ if (!savedTheme) {
 function setTheme(theme: Theme) {
   const nextTheme = theme === Theme.Light ? Theme.Dark : Theme.Light;
 
-  if (themeToggle) {
-    themeToggle.innerText = `${nextTheme}_mode`;
-    themeToggle.title = `Switch to ${nextTheme.charAt(0).toUpperCase()}${nextTheme.slice(1)} Mode`;
-  }
+  // Safe because we already checked themeToggle
+  themeToggle.innerText = `${nextTheme}_mode`;
+  themeToggle.title = `Switch to ${nextTheme.charAt(0).toUpperCase()}${nextTheme.slice(1)} Mode`;
 
   localStorage.setItem("theme", `${theme}_mode`);
   document.documentElement.setAttribute("data-theme", theme);
@@ -54,7 +53,7 @@ interface PinnedProject {
   } | null;
 }
 
-// Fetch and display pinned projects
+// Function to fetch and display pinned projects
 async function fetchPinnedProjects() {
   try {
     const response = await fetch("/pins.json");
@@ -69,34 +68,71 @@ async function fetchPinnedProjects() {
       return;
     }
 
+    projectCards.innerHTML = ""; // Clear previous cards
+
     for (const project of projects) {
       const card = document.createElement("a");
       card.href = project.url;
       card.target = "_blank";
       card.className = "project-card";
 
+      // Create card body
+      const cardBody = document.createElement("div");
+      cardBody.className = "project-card-body";
+
+      // Project title
       const title = document.createElement("h3");
       title.innerText = project.name;
-      card.appendChild(title);
+      cardBody.appendChild(title);
 
+      // Project description
       const description = document.createElement("p");
       description.innerText = project.description ?? "No description provided.";
-      card.appendChild(description);
+      cardBody.appendChild(description);
 
-      // Optional: language
-      if (project.language) {
-        const lang = document.createElement("span");
-        lang.innerText = `Language: ${project.language.name}`;
-        lang.style.color = project.language.color;
-        card.appendChild(lang);
-      }
+      card.appendChild(cardBody);
 
-      // Optional: stars
+      // Create card footer
+      const cardFooter = document.createElement("div");
+      cardFooter.className = "project-card-footer";
+
+      // Stars
       if (project.stars !== undefined) {
         const stars = document.createElement("span");
         stars.innerText = ` ⭐ ${project.stars}`;
-        card.appendChild(stars);
+        cardFooter.appendChild(stars);
       }
+
+      // Language icon
+      if (project.language) {
+        const langContainer = document.createElement("div");
+        langContainer.style.display = "flex";
+        langContainer.style.alignItems = "center";
+        langContainer.style.gap = "4px";
+
+        // Logo
+        const langLogo = document.createElement("img");
+        langLogo.src = `https://cdn.simpleicons.org/${project.language.name.toLowerCase()}`;
+        langLogo.alt = project.language.name;
+        langLogo.title = project.language.name;
+        langLogo.style.width = "16px";
+        langLogo.style.height = "16px";
+        langLogo.style.display = "inline-block";
+        langLogo.style.verticalAlign = "middle";
+        langContainer.appendChild(langLogo);
+
+        // Optional colored dot (GitHub-style)
+        const langDot = document.createElement("span");
+        langDot.style.width = "10px";
+        langDot.style.height = "10px";
+        langDot.style.borderRadius = "50%";
+        langDot.style.backgroundColor = project.language.color;
+        langContainer.appendChild(langDot);
+
+        cardFooter.appendChild(langContainer);
+      }
+
+      card.appendChild(cardFooter);
 
       projectCards.appendChild(card);
     }
