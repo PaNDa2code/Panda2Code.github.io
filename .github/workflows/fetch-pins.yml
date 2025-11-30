@@ -2,6 +2,10 @@ name: Fetch and Deploy Pinned Repos
 
 on:
   workflow_dispatch:
+
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+
   schedule:
     - cron: '0 */6 * * *'
 
