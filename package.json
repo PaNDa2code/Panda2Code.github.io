@@ -1,31 +1,19 @@
 {
-  "name": "webpack",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "homepage": "https://panda2code.github.io/",
+  "name": "panda2code.github.io",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production",
-    "deploy": "npm run build && gh-pages -d dist"
+    "start": "bun run index.ts",
+    "build": "bun run build.ts",
+    "dev": "bun --watch index.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.26.9",
-    "@babel/preset-env": "^7.26.9",
-    "babel-loader": "^10.0.0",
-    "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^13.0.0",
-    "css-loader": "^7.1.2",
-    "gh-pages": "^6.3.0",
-    "html-webpack-plugin": "^5.6.3",
-    "mini-css-extract-plugin": "^2.9.2",
-    "sass": "^1.85.1",
-    "sass-loader": "^16.0.5",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.0"
-  }
+    "@types/bun": "latest",
+    "bun-plugin-html": "^2.2.8"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {}
 }
