@@ -1,35 +1,67 @@
-let themeToggle = document.getElementById("theme-toggle");
-
-if (!localStorage.getItem("theme")) {
-  setTheme("dark");
-} else {
-  let savedTheme = localStorage.getItem("theme").replace("_mode", "");
-  setTheme(savedTheme);
+// Enum for theme
+enum Theme {
+  Light = "light",
+  Dark = "dark",
 }
 
-function setTheme(theme) {
-  let nextTheme = theme === "light" ? "dark" : "light";
+// Grab theme toggle button
+const themeToggle = document.getElementById("theme-toggle") as HTMLButtonElement | null;
 
-  themeToggle.innerText = nextTheme + "_mode";
-  themeToggle.title = "Switch to " + nextTheme.charAt(0).toUpperCase() + nextTheme.slice(1) + " Mode";
+// Ensure themeToggle exists
+if (!themeToggle) {
+  throw new Error("Element with id 'theme-toggle' not found");
+}
 
-  localStorage.setItem("theme", theme + "_mode");
+// Initialize theme
+const savedTheme = localStorage.getItem("theme");
+if (!savedTheme) {
+  setTheme(Theme.Dark);
+} else {
+  const themeString = savedTheme.replace("_mode", "") as keyof typeof Theme;
+  setTheme(Theme[themeString] ?? Theme.Dark);
+}
+
+// Function to set theme
+function setTheme(theme: Theme) {
+  const nextTheme = theme === Theme.Light ? Theme.Dark : Theme.Light;
+
+  if (themeToggle) {
+    themeToggle.innerText = `${nextTheme}_mode`;
+    themeToggle.title = `Switch to ${nextTheme.charAt(0).toUpperCase()}${nextTheme.slice(1)} Mode`;
+  }
+
+  localStorage.setItem("theme", `${theme}_mode`);
   document.documentElement.setAttribute("data-theme", theme);
 }
 
+// Theme toggle event
 themeToggle.addEventListener("click", () => {
-  let currentTheme = document.documentElement.getAttribute("data-theme");
-  let newTheme = currentTheme === "light" ? "dark" : "light";
+  const currentTheme = document.documentElement.getAttribute("data-theme") as Theme | null;
+  const newTheme = currentTheme === Theme.Light ? Theme.Dark : Theme.Light;
   setTheme(newTheme);
 });
 
+// Type for pinned projects
+interface PinnedProject {
+  name: string;
+  description?: string | null;
+  url: string;
+  stars?: number;
+  forks?: number;
+  language?: {
+    name: string;
+    color: string;
+  } | null;
+}
+
+// Fetch and display pinned projects
 async function fetchPinnedProjects() {
   try {
     const response = await fetch("/pins.json");
     if (!response.ok) {
       throw new Error(`Failed to fetch pinned projects: ${response.statusText}`);
     }
-    const projects = await response.json();
+    const projects: PinnedProject[] = await response.json();
 
     const projectCards = document.getElementById("project-cards");
     if (!projectCards) {
@@ -48,16 +80,18 @@ async function fetchPinnedProjects() {
       card.appendChild(title);
 
       const description = document.createElement("p");
-      description.innerText = project.description || "No description provided.";
+      description.innerText = project.description ?? "No description provided.";
       card.appendChild(description);
 
-      // Optional: Add language and star count
+      // Optional: language
       if (project.language) {
         const lang = document.createElement("span");
         lang.innerText = `Language: ${project.language.name}`;
         lang.style.color = project.language.color;
         card.appendChild(lang);
       }
+
+      // Optional: stars
       if (project.stars !== undefined) {
         const stars = document.createElement("span");
         stars.innerText = ` ⭐ ${project.stars}`;
@@ -75,4 +109,5 @@ async function fetchPinnedProjects() {
   }
 }
 
+// Fetch projects on window load
 window.addEventListener("load", fetchPinnedProjects);
