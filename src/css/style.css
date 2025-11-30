@@ -36,18 +36,34 @@ body {
   font-size: 20px;
 }
 
-/* Adjust font size for smaller screens (e.g., phones) */
-@media only screen and (max-width: 600px) {
-  pre {
-    font-size: 2vw; /* Larger font size for mobile */
-  }
-}
-
 /* Adjust font size for larger screens (e.g., tablets and desktops) */
 @media only screen and (min-width: 601px) {
   pre {
     font-size: 1vw; /* Default font size for desktop */
   }
+}
+
+@media only screen and (max-width: 600px) {
+  pre {
+    font-size: 7px !important;
+    line-height: 7px !important;
+    letter-spacing: 0px;
+  }
+
+  #content {
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+.ascii-logo {
+  white-space: pre !important;
+  overflow-x: auto !important;
+  display: block;
+  width: 100%;
+  
+  font-family: "Courier New", Courier, monospace !important; 
+  font-weight: bold;
 }
 
 h2 {
