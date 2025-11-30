@@ -1,0 +1,68 @@
+[
+  {
+    "name": "zerotty",
+    "description": "Cross platfom GPU accelerated terminal emulator written in zig",
+    "url": "https://github.com/PaNDa2code/zerotty",
+    "stars": 12,
+    "forks": 0,
+    "language": {
+      "name": "Zig",
+      "color": "#ec915c"
+    }
+  },
+  {
+    "name": "WindowsMessageBoxShellcode",
+    "description": "simple windows messagebox shellcode written in c",
+    "url": "https://github.com/PaNDa2code/WindowsMessageBoxShellcode",
+    "stars": 0,
+    "forks": 0,
+    "language": {
+      "name": "C",
+      "color": "#555555"
+    }
+  },
+  {
+    "name": "Redis-like-db",
+    "description": "In-memory key-value database implemented in C",
+    "url": "https://github.com/PaNDa2code/Redis-like-db",
+    "stars": 0,
+    "forks": 0,
+    "language": {
+      "name": "C",
+      "color": "#555555"
+    }
+  },
+  {
+    "name": "zmph",
+    "description": "Minimal perfect hash function generator",
+    "url": "https://github.com/PaNDa2code/zmph",
+    "stars": 8,
+    "forks": 0,
+    "language": {
+      "name": "Zig",
+      "color": "#ec915c"
+    }
+  },
+  {
+    "name": "PandaPrimes",
+    "description": "*PandaPrime* is a python module for dealing with primes easer and faster.",
+    "url": "https://github.com/PaNDa2code/PandaPrimes",
+    "stars": 0,
+    "forks": 0,
+    "language": {
+      "name": "C",
+      "color": "#555555"
+    }
+  },
+  {
+    "name": "Panda2Code.github.io",
+    "description": null,
+    "url": "https://github.com/PaNDa2code/Panda2Code.github.io",
+    "stars": 0,
+    "forks": 0,
+    "language": {
+      "name": "TypeScript",
+      "color": "#3178c6"
+    }
+  }
+]
