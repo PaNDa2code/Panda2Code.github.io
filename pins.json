@@ -55,14 +55,14 @@
     }
   },
   {
-    "name": "Panda2Code.github.io",
-    "description": null,
-    "url": "https://github.com/PaNDa2code/Panda2Code.github.io",
+    "name": "zig_openpty",
+    "description": "Simple clone of libc openpty in zig",
+    "url": "https://github.com/PaNDa2code/zig_openpty",
     "stars": 0,
     "forks": 0,
     "language": {
-      "name": "TypeScript",
-      "color": "#3178c6"
+      "name": "Zig",
+      "color": "#ec915c"
     }
   }
 ]
