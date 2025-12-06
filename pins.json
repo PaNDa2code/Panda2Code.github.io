@@ -3,7 +3,7 @@
     "name": "zerotty",
     "description": "Cross platfom GPU accelerated terminal emulator written in zig",
     "url": "https://github.com/PaNDa2code/zerotty",
-    "stars": 12,
+    "stars": 13,
     "forks": 0,
     "language": {
       "name": "Zig",
