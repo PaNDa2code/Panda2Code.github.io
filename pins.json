@@ -58,7 +58,7 @@
     "name": "zig_openpty",
     "description": "Simple clone of libc openpty in zig",
     "url": "https://github.com/PaNDa2code/zig_openpty",
-    "stars": 0,
+    "stars": 1,
     "forks": 0,
     "language": {
       "name": "Zig",
